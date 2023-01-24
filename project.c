@@ -187,9 +187,7 @@ void DUMP_REGS_F()
     FILE *file;
     file=fopen("regs.txt", "w");
     if (file == NULL)
-    {
         printf("Error Dump Regs F");
-    }
     else
     {
         for (int i = 0; i < 32; i++)
@@ -198,8 +196,6 @@ void DUMP_REGS_F()
         for (int i = 0; i < 8; i++)
             fprintf(file, " %d ", situation[i]);
     }
-    // fwrite(S, sizeof(int), 32, file);
-    // fwrite(situation, sizeof(char), 8, file);
     fclose(file);
 }
 void INPUT()
