@@ -291,8 +291,6 @@ int main(int argc, char *argv[])
             buffer[i] = toupper(buffer[i]);
         for (j = 0; (buffer[j]!= ' ' && buffer[j]!= '\n' && buffer[j]!= '\\'); j++)
             forms[j] = buffer[j];
-        //|| (buffer[j]!= '\n')
-        // forms[j+1]= '\0';
         int result, one, two;
         if (strcmp(forms, "EXIT") == 0)
             exit(0);
