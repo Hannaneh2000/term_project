@@ -13,3 +13,13 @@ ADD S21, S1, S15
 DUMP_REGS 
 OR S1, S15
 DUMP_REGS_F 
+while (buffer[j]!= ' '|| (buffer[j]!= '\n'))
+            {
+                forms[j] = buffer[j];
+                j++;
+            }
+        j=0;
+        // for (j = 0; (buffer[j]!= ' ' || (buffer[j]!= '\n')); j++)
+        //     forms[j] = buffer[j];
+        //|| (buffer[j]!= '\n')
+        // forms[j+1]= '\0';
