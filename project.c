@@ -258,13 +258,13 @@ int error_index(int a, int b, int c, char d[15])
     int f=0;
     if (a <0 || b < 0 || c < 0)
     {
-        printf("%c negative index error ", d);
+        printf("%s negative index error ", d);
         f = 5;
     }
         
     if (a > 31 || b > 31 || c > 31)
     {
-        printf("%c value index error ", d);
+        printf("%s value index error ", d);
         f =5;
     }
     if(f != 5)
@@ -276,14 +276,13 @@ int main(int argc, char *argv[])
 {
     // char Name[100];
     char buffer[1000];
-    int checkline=0;
     // scanf("%s", Name);
     FILE *Inputs;
     if (argc <2)
         Inputs = fopen("in.txt", "r");
     else
         Inputs = fopen(argv[1], "r");
-    int jmpcount = 0;
+    int jmpcount = 0, checkline=0;
     while(fscanf(Inputs, "%[^\n]\n", buffer) != EOF)
         checkline++;
     rewind(Inputs);
@@ -294,7 +293,7 @@ int main(int argc, char *argv[])
         char forms[15] = {'\0'};
         for (int i = 0; i< sizeof(buffer); i++)
             buffer[i] = toupper(buffer[i]);
-        for (j = 0; (buffer[j]!= ' '); j++)
+        for (j = 0; (buffer[j]!= ' ' && buffer[j]!= '\n' && buffer[j]!= '\\'); j++)
             forms[j] = buffer[j];
         //|| (buffer[j]!= '\n')
         // forms[j+1]= '\0';
@@ -325,7 +324,7 @@ int main(int argc, char *argv[])
                 if (result <= 0)
                     printf("Negative Error in JMP\n");
                 else if (result > checkline)
-                    printf("Error in JMP: More than exist\n");
+                    printf("Error in JMP: More %d lines\n", checkline);
                 else
                 {
                     rewind(Inputs);
