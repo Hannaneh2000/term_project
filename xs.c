@@ -293,7 +293,7 @@ int main(int argc, char *argv[])
         char forms[15] = {'\0'};
         for (int i = 0; i< sizeof(buffer); i++)
             buffer[i] = toupper(buffer[i]);
-        for (j = 0; (buffer[j]!= ' '); j++)
+        for (j = 0; ((buffer[j]!= ' ' && buffer[j]!= '\n' && buffer[j]!= '/' && buffer[j]!= '\0'); j++)
         {
             forms[j] = buffer[j];
             // if (buffer[j+1] == '\0')

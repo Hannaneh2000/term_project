@@ -5,6 +5,37 @@
 int S[32];
 int Imm, j=0;
 int situation[8];
+
+void red()
+{
+    printf("\033[1;31m");
+}
+void yellow()
+{
+    printf("\033[1;33m");
+}
+void green()
+{
+    printf("\033[1;32m");
+}
+void white()
+{
+    printf("\033[1;37m");
+}
+void blue()
+{
+    printf("\033[1;34m");
+}
+void purple()
+{
+    printf("\033[1;35m");
+}
+void reset()
+{
+    printf("\033[1;0m");
+}
+
+
 void parity_flag(int result)
 {
     int count = 0;
@@ -117,7 +148,7 @@ void MULL(int rt, int rs)
     parity_flag(multi);
     zero_flag(multi);
     sign_flag(multi);
-    overflow_flag_mull(S[rt], S[rs], Imm);
+    overflow_flag_mull(S[rt], S[rs], multi);
 }
 void ADDI(int rt, int rs, int Imm)
 {
@@ -187,7 +218,7 @@ void DUMP_REGS_F()
     FILE *file;
     file=fopen("regs.txt", "w");
     if (file == NULL)
-        printf("Error Dump Regs F");
+        printf("Error Dump Regs F\n");
     else
     {
         for (int i = 0; i < 32; i++)
@@ -200,7 +231,10 @@ void DUMP_REGS_F()
 }
 void INPUT()
 {
-    scanf("%d", &S[0]);
+    blue();
+    printf("enter S0 value: ");
+    scanf(" %d", &S[0]);
+    reset();
 }
 void OUTPUT()
 {
@@ -219,48 +253,18 @@ void pop(int n)
     for (int i = 0; i < 50; i++)
         stack[i] = stack[i+1];
 }
-
-void red()
-{
-    printf("\033[1;31m");
-}
-void yellow()
-{
-    printf("\033[1;33m");
-}
-void green()
-{
-    printf("\033[1;32m");
-}
-void white()
-{
-    printf("\033[1;37m");
-}
-void blue()
-{
-    printf("\033[1;34m");
-}
-void purple()
-{
-    printf("\033[1;35m");
-}
-void reset()
-{
-    printf("\033[1;0m");
-}
-
 int error_index(int a, int b, int c, char d[15])
 {
     int f=0;
     if (a <0 || b < 0 || c < 0)
     {
-        printf("%s negative index error ", d);
+        printf("%s negative index error \n", d);
         f = 5;
     }
         
     if (a > 31 || b > 31 || c > 31)
     {
-        printf("%s value index error ", d);
+        printf("%s value index error \n", d);
         f =5;
     }
     if(f != 5)
@@ -282,178 +286,195 @@ int main(int argc, char *argv[])
     while(fscanf(Inputs, "%[^\n]\n", buffer) != EOF)
         checkline++;
     rewind(Inputs);
+    int lineerror;
     while(fscanf(Inputs, "%[^\n]\n", buffer) != EOF) 
     {
         reset();
+        lineerror++;
         jmpcount++;
         char forms[15] = {'\0'};
         for (int i = 0; i< sizeof(buffer); i++)
             buffer[i] = toupper(buffer[i]);
-        for (j = 0; (buffer[j]!= ' ' && buffer[j]!= '\n' && buffer[j]!= '\\'); j++)
+        for (j = 0; (buffer[j]!= ' ' && buffer[j]!= '\n' && buffer[j]!= '/' && buffer[j]!= '\0'); j++)
             forms[j] = buffer[j];
         int result, one, two;
-        if (strcmp(forms, "EXIT") == 0)
-            exit(0);
-        else if (strcmp(forms, "ADD") == 0)
+        if(forms[0] != '\0')
         {
-            sscanf(buffer, "ADD S%d, S%d, S%d", &result, &one, &two);
-            if (error_index(result, one, two, forms) == 2)
-                ADD(result, one, two);
-        }
-        else if (strcmp(forms, "JMP") == 0)
-        {
-            jmpcount++;
-            if (jmpcount > 10)
+            if (strcmp(forms, "EXIT") == 0)
+                exit(0);
+            else if (strcmp(forms, "ADD") == 0)
             {
-                red();
-                printf("loop skip");
-                white();
-                fscanf(Inputs, "%[^\n]\n", buffer);
-                // jmpcount = 0;
+                sscanf(buffer, "ADD S%d, S%d, S%d", &result, &one, &two);
+                if (error_index(result, one, two, forms) == 2)
+                    ADD(result, one, two);
             }
-            else
+            else if (strcmp(forms, "JMP") == 0)
             {
-                int lines = 1, chars = 0;
-                sscanf(buffer, "JMP %d", &result);
-                if (result <= 0)
-                    printf("Negative Error in JMP\n");
-                else if (result > checkline)
-                    printf("Error in JMP: More %d lines\n", checkline);
+                jmpcount++;
+                if (jmpcount > 10)
+                {
+                    red();
+                    printf("loop skip\n");
+                    white();
+                    // fscanf(Inputs, "%[^\n]\n", buffer);
+                    // lineerror++;
+                    // jmpcount = 0;
+                }
                 else
                 {
-                    rewind(Inputs);
-                    while (lines != result)
+                    int lines = 1;
+                    // int chars = 0;
+                    sscanf(buffer, "JMP %d", &result);
+                    if (result <= 0)
+                        {
+                            yellow();
+                            printf("line %d: Negative Error in JMP\n", lineerror);
+                            reset();
+                        }
+                    else if (result > checkline)
+                        {
+                            yellow();
+                            printf("line %d: Error in JMP: More %d lines\n", lineerror, checkline);
+                            reset();
+                        }
+                    else
                     {
-                        chars++;
-                        if (fgetc(Inputs) == '\n')
-                            lines++;
+                        rewind(Inputs);
+                        lineerror = result;
+                        while (lines != result)
+                        {
+                            // chars++;
+                            if (fgetc(Inputs) == '\n')
+                                lines++;
+                        }
+                        // fseek(Inputs, chars, SEEK_SET);
+                        // fscanf(Inputs, "%[^\n]\n", buffer);
                     }
-                    fseek(Inputs, chars, SEEK_SET);
-                    fscanf(Inputs, "%[^\n]\n", buffer);
                 }
             }
-        }
-        else if (strcmp(forms, "SKIE") == 0)
-        {
-            sscanf(buffer, "SKIE S%d, S%d", &one, &two);
-            if (error_index(one, two, 1, forms) == 2)
+            else if (strcmp(forms, "SKIE") == 0)
             {
-                if (S[one] == S[two])
-                fscanf(Inputs, "%[^\n]\n", buffer);
+                sscanf(buffer, "SKIE S%d, S%d", &one, &two);
+                if (error_index(one, two, 1, forms) == 2)
+                {
+                    if (S[one] == S[two])
+                    fscanf(Inputs, "%[^\n]\n", buffer);
+                }
+                lineerror++;
             }
-        }
-        else if(strcmp(forms, "SUB") == 0)
-        {
-            sscanf(buffer, "SUB S%d, S%d, S%d", &result, &one, &two);
-            if (error_index(result, one, two, forms) == 2)
-                SUB(result, one, two);
-        }
-        else if(strcmp(forms, "AND") == 0)
-        {
-            sscanf(buffer, "AND S%d, S%d, S%d", &result, &one, &two);
-            if (error_index(result, one, two, forms) == 2)
-                AND(result, one, two);
-        }
-        else if(strcmp(forms, "XOR") == 0)
-        {
-            sscanf(buffer, "XOR S%d, S%d, S%d", &result, &one, &two);
-            if (error_index(result, one, two, forms) == 2)
-                XOR(result, one, two);
-        }
-        else if(strcmp(forms, "OR") == 0)
-        {
-            sscanf(buffer, "OR S%d, S%d, S%d", &result, &one, &two);
-            if (error_index(result, one, two, forms) == 2)
-                OR(result, one, two);
-        }
-        else if(strcmp(forms, "ADDI") == 0)
-        {
-            sscanf(buffer, "ADDI S%d, S%d, %d", &result, &one, &two);
-            if (error_index(result, one, 1, forms) == 2)
-                ADDI(result, one, two);
-        }
-        else if(strcmp(forms, "SUBI") == 0)
-        {
-            sscanf(buffer, "SUBI S%d, S%d, %d", &result, &one, &two);
-            if (error_index(result, one, 1, forms) == 2)
-                SUBI(result, one, two);
-        }
-        else if(strcmp(forms, "ANDI") == 0)
-        {
-            sscanf(buffer, "ANDI S%d, S%d, %d", &result, &one, &two);
-            if (error_index(result, one, 1, forms) == 2)
-                ANDI(result, one, two);
-        }
-        else if(strcmp(forms, "XORI") == 0)
-        {
-            sscanf(buffer, "XORI S%d, S%d, %d", &result, &one, &two);
-            if (error_index(result, one, 1, forms) == 2)
-                XORI(result, one, two);
-        }
-        else if(strcmp(forms, "ORI") == 0)
-        {
-            sscanf(buffer, "ORI S%d, S%d, %d", &result, &one, &two);
-            if (error_index(result, one, 1, forms) == 2)
-                ORI(result, one, two);
-        }
-        else if(strcmp(forms, "MOV") == 0)
-        {
-            if (buffer[8] == 'S' || buffer[9] == 'S')
+            else if(strcmp(forms, "SUB") == 0)
             {
-                sscanf(buffer, "MOV S%d, S%d", &result, &one);
+                sscanf(buffer, "SUB S%d, S%d, S%d", &result, &one, &two);
+                if (error_index(result, one, two, forms) == 2)
+                    SUB(result, one, two);
+            }
+            else if(strcmp(forms, "AND") == 0)
+            {
+                sscanf(buffer, "AND S%d, S%d, S%d", &result, &one, &two);
+                if (error_index(result, one, two, forms) == 2)
+                    AND(result, one, two);
+            }
+            else if(strcmp(forms, "XOR") == 0)
+            {
+                sscanf(buffer, "XOR S%d, S%d, S%d", &result, &one, &two);
+                if (error_index(result, one, two, forms) == 2)
+                    XOR(result, one, two);
+            }
+            else if(strcmp(forms, "OR") == 0)
+            {
+                sscanf(buffer, "OR S%d, S%d, S%d", &result, &one, &two);
+                if (error_index(result, one, two, forms) == 2)
+                    OR(result, one, two);
+            }
+            else if(strcmp(forms, "ADDI") == 0)
+            {
+                sscanf(buffer, "ADDI S%d, S%d, %d", &result, &one, &two);
                 if (error_index(result, one, 1, forms) == 2)
-                    MOV(result, S[one]);
+                    ADDI(result, one, two);
+            }
+            else if(strcmp(forms, "SUBI") == 0)
+            {
+                sscanf(buffer, "SUBI S%d, S%d, %d", &result, &one, &two);
+                if (error_index(result, one, 1, forms) == 2)
+                    SUBI(result, one, two);
+            }
+            else if(strcmp(forms, "ANDI") == 0)
+            {
+                sscanf(buffer, "ANDI S%d, S%d, %d", &result, &one, &two);
+                if (error_index(result, one, 1, forms) == 2)
+                    ANDI(result, one, two);
+            }
+            else if(strcmp(forms, "XORI") == 0)
+            {
+                sscanf(buffer, "XORI S%d, S%d, %d", &result, &one, &two);
+                if (error_index(result, one, 1, forms) == 2)
+                    XORI(result, one, two);
+            }
+            else if(strcmp(forms, "ORI") == 0)
+            {
+                sscanf(buffer, "ORI S%d, S%d, %d", &result, &one, &two);
+                if (error_index(result, one, 1, forms) == 2)
+                    ORI(result, one, two);
+            }
+            else if(strcmp(forms, "MOV") == 0)
+            {
+                if (buffer[8] == 'S' || buffer[9] == 'S')
+                {
+                    sscanf(buffer, "MOV S%d, S%d", &result, &one);
+                    if (error_index(result, one, 1, forms) == 2)
+                        MOV(result, S[one]);
+                }
+                else
+                {
+                    sscanf(buffer, "MOV S%d, %d", &result, &one);
+                    if (error_index(result, 1, 1, forms) == 2)
+                        MOV(result, one);
+                }
+            }
+            else if(strcmp(forms, "SWP") == 0)
+            {
+                sscanf(buffer, "SWP S%d, S%d", &result, &one);
+                if (error_index(result, one, 1, forms) == 2)
+                    SWP(result, one);
+            }
+            else if(strcmp(forms, "PUSH") == 0)
+            {
+                sscanf(buffer, "PUSH S%d", &result);
+                if (error_index(result, 1, 1, forms) == 2)
+                    push(result);
+            }
+            else if(strcmp(forms, "POP") == 0)
+            {
+                sscanf(buffer, "POP S%d", &result);
+                if (error_index(result, 1, 1, forms) == 2)
+                    pop(result);
+            }
+            else if(strcmp(forms, "DUMP_REGS") == 0)
+                DUMP_REGS();
+            else if(strcmp(forms, "DUMP_REGS_F") == 0)
+                DUMP_REGS_F();
+            else if(strcmp(forms, "INPUT") == 0)
+                INPUT();
+            else if(strcmp(forms, "OUTPUT") == 0)
+                OUTPUT();
+            else if(strcmp(forms, "MULL") == 0)
+            {
+                sscanf(buffer, "MULL S%d, S%d", &result, &one);
+                if (error_index(result, one, 1, forms) == 2)
+                    MULL(result, one);
+            }
+            else if(strcmp(forms, "DIV") == 0)
+            {
+                sscanf(buffer, "DIV S%d, S%d", &result, &one);
+                if (error_index(result, one, 1, forms) == 2)
+                    DIV(result, one);
             }
             else
             {
-                sscanf(buffer, "MOV S%d, %d", &result, &one);
-                if (error_index(result, 1, 1, forms) == 2)
-                    MOV(result, one);
+                red();
+                printf("Wrong Instructure \n");
             }
         }
-        else if(strcmp(forms, "SWP") == 0)
-        {
-            sscanf(buffer, "SWP S%d, S%d", &result, &one);
-            if (error_index(result, one, 1, forms) == 2)
-                SWP(result, one);
         }
-        else if(strcmp(forms, "PUSH") == 0)
-        {
-            sscanf(buffer, "PUSH S%d", &result);
-            if (error_index(result, 1, 1, forms) == 2)
-                push(result);
-        }
-        else if(strcmp(forms, "POP") == 0)
-        {
-            sscanf(buffer, "POP S%d", &result);
-            if (error_index(result, 1, 1, forms) == 2)
-                pop(result);
-        }
-        else if(strcmp(forms, "DUMP_REGS") == 0)
-            DUMP_REGS();
-        else if(strcmp(forms, "DUMP_REGS_F") == 0)
-            DUMP_REGS_F();
-        else if(strcmp(forms, "INPUT") == 0)
-            INPUT();
-        else if(strcmp(forms, "OUTPUT") == 0)
-            OUTPUT();
-        else if(strcmp(forms, "MULL") == 0)
-        {
-            sscanf(buffer, "MULL S%d, S%d", &result, &one);
-            if (error_index(result, one, 1, forms) == 2)
-                MULL(result, one);
-        }
-        else if(strcmp(forms, "DIV") == 0)
-        {
-            sscanf(buffer, "DIV S%d, S%d", &result, &one);
-            if (error_index(result, one, 1, forms) == 2)
-                DIV(result, one);
-        }
-        else
-        {
-            red();
-            printf("Wrong Instructure  ");
-        }
-    }
     fclose(Inputs);
 }
