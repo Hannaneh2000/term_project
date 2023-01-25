@@ -1,7 +1,7 @@
 MOV S1, 2\\Hannaneh Hakkak
 MOV S15, 8
 MOV S8, 50
-MOV S25, 8 
+MOV S25, 8
 JMP -7
 JMP 23    \\jump is more than 17
 MULL S25, S15
