@@ -394,6 +394,7 @@ void DUMP_REGS()
     green();
     for (int i = 0; i < 8; i++)
         printf("%d  ", situation[i]);
+    printf("\n");
     reset();
 }
 /**
@@ -440,6 +441,7 @@ void INPUT()
 void OUTPUT()
 {
     printf("%d", S[0]);
+    printf("\n");
 }
 int stack[50]; /**Global variable stack*/
 /**
@@ -541,7 +543,7 @@ int main(int argc, char *argv[])
                     printf("loop skip in line %d\n", lineerror);
                     white();
                     // fscanf(Inputs, "%[^\n]\n", buffer);
-                    // lineerror++;
+                    // lineerror--;
                     // jmpcount = 0;
                 }
                 else
@@ -564,7 +566,7 @@ int main(int argc, char *argv[])
                     else
                     {
                         rewind(Inputs);
-                        lineerror = result;
+                        lineerror = result-1;
                         while (lines != result)
                         {
                             // chars++;

@@ -1,0 +1,750 @@
+\hypertarget{project_8c}{}\doxysection{project.\+c File Reference}
+\label{project_8c}\index{project.c@{project.c}}
+
+
+includes  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$ctype.\+h$>$}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{project_8c_a39abd40f68d03c40857be1e74407efb9}{red}} ()
+\begin{DoxyCompactList}\small\item\em redcolor out put \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{project_8c_ab0c10e6284be130a7973fa029a690ef7}{yellow}} ()
+\begin{DoxyCompactList}\small\item\em yellowcolor out put \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{project_8c_a0df115437fbb77c0311e65300c65289e}{green}} ()
+\begin{DoxyCompactList}\small\item\em greencolor out put \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{project_8c_ac0fd834412eb7d5311f137d919db6788}{white}} ()
+\begin{DoxyCompactList}\small\item\em whitecolor out put \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{project_8c_a161aec8a96c389795d228ca0c3a949d5}{blue}} ()
+\begin{DoxyCompactList}\small\item\em bluecolor out put \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{project_8c_ab2b14535fac90d655eb767bff5647d88}{purple}} ()
+\begin{DoxyCompactList}\small\item\em purplecolor out put \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{project_8c_ad20897c5c8bd47f5d4005989bead0e55}{reset}} ()
+\begin{DoxyCompactList}\small\item\em resetcolor out put \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{project_8c_acf6a0d679a1edf0b6d196423e84fddc2}{parity\+\_\+flag}} (int result)
+\begin{DoxyCompactList}\small\item\em Status\mbox{[}0\mbox{]} of the last Command. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{project_8c_a1af144ae42cefa4930edcbc7973f35ab}{zero\+\_\+flag}} (int result)
+\begin{DoxyCompactList}\small\item\em Status\mbox{[}1\mbox{]} of the last Command\+: Numbers of zeros. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{project_8c_a84a58a762ae710fa88c6110dd57d27c9}{sign\+\_\+flag}} (int result)
+\begin{DoxyCompactList}\small\item\em Status\mbox{[}2\mbox{]} of the last Command\+: Sign. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{project_8c_a6456012131ddba7ac94c7404e38d7f67}{overflow\+\_\+flag\+\_\+add}} (int a, int b, int c)
+\begin{DoxyCompactList}\small\item\em Status\mbox{[}5\mbox{]} of the last Command\+: overflow. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{project_8c_a5629b547292a74c1c7754626ddcb4e1e}{overflow\+\_\+flag\+\_\+sub}} (int a, int b, int c)
+\begin{DoxyCompactList}\small\item\em Status\mbox{[}5\mbox{]} of the last Command\+: overflow. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{project_8c_a5966cdaaace3b911846fc8628f0d3448}{overflow\+\_\+flag\+\_\+mull}} (int a, int b, int c)
+\begin{DoxyCompactList}\small\item\em Status\mbox{[}5\mbox{]} of the last Command\+: overflow. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{project_8c_a208b473791cc65cdef28b1a06632767c}{ADD}} (int rd, int rs, int rt)
+\begin{DoxyCompactList}\small\item\em adding two registers \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{project_8c_a7d552c470d929956ad217d8890a22e19}{SUB}} (int rd, int rs, int rt)
+\begin{DoxyCompactList}\small\item\em subing two registers \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{project_8c_a53f6d122aba9172e5c5082831bf9b38d}{AND}} (int rd, int rs, int rt)
+\begin{DoxyCompactList}\small\item\em AND two registers. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{project_8c_a63c0b5dc1a36b43cfcbaa2fca3370599}{OR}} (int rd, int rs, int rt)
+\begin{DoxyCompactList}\small\item\em OR two registers. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{project_8c_a4c2aba9cfc40e6c523935c9b706fc17b}{XOR}} (int rd, int rs, int rt)
+\begin{DoxyCompactList}\small\item\em XOR two registers. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{project_8c_a55d87b24a8c43f74c7a16a88de23d8c9}{DIV}} (int rt, int rs)
+\begin{DoxyCompactList}\small\item\em divide two registers \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{project_8c_ab9c9faca58fe2946cec7a2d5cce2f954}{MULL}} (int rt, int rs)
+\begin{DoxyCompactList}\small\item\em multiply two registers\+: 4 more bits in rt \& 4 less bits in rs \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{project_8c_aea7e4871dbf3bbada7e723caf01d0439}{ADDI}} (int rt, int rs, int \mbox{\hyperlink{project_8c_a4a78cef49baf9d380688ae8a9640c28a}{Imm}})
+\begin{DoxyCompactList}\small\item\em adding a registers and a number \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{project_8c_a73241cd5d065fe5e3c8fcd17f29ba1ed}{SUBI}} (int rt, int rs, int \mbox{\hyperlink{project_8c_a4a78cef49baf9d380688ae8a9640c28a}{Imm}})
+\begin{DoxyCompactList}\small\item\em subbing a registers and a number \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{project_8c_af45f9fd88ba958dc935585d12ff327dc}{ANDI}} (int rt, int rs, int \mbox{\hyperlink{project_8c_a4a78cef49baf9d380688ae8a9640c28a}{Imm}})
+\begin{DoxyCompactList}\small\item\em AND a register with a number. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{project_8c_acc90d732c1fb58250a6bc176275b97ab}{ORI}} (int rt, int rs, int \mbox{\hyperlink{project_8c_a4a78cef49baf9d380688ae8a9640c28a}{Imm}})
+\begin{DoxyCompactList}\small\item\em OR a register with a number. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{project_8c_a45a828d6c33c2f9cc2983efb4a3067ac}{XORI}} (int rt, int rs, int \mbox{\hyperlink{project_8c_a4a78cef49baf9d380688ae8a9640c28a}{Imm}})
+\begin{DoxyCompactList}\small\item\em XOR a register with a number. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{project_8c_a406fab2688bf343429713a2eb98acc0d}{MOV}} (int rt, int \mbox{\hyperlink{project_8c_a4a78cef49baf9d380688ae8a9640c28a}{Imm}})
+\begin{DoxyCompactList}\small\item\em put a number in a register \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{project_8c_ae1d663091740d39219a78794f4c6120e}{SWP}} (int rt, int rs)
+\begin{DoxyCompactList}\small\item\em swap two registers \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{project_8c_a7246c8d53de6fe3db29dacbae22570db}{DUMP\+\_\+\+REGS}} ()
+\begin{DoxyCompactList}\small\item\em print all register\textquotesingle{}s value \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{project_8c_a57414c536ef5b7200c74c9e346c5c54a}{DUMP\+\_\+\+REGS\+\_\+F}} (int e)
+\begin{DoxyCompactList}\small\item\em save the value of all registers in regs.\+tx \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{project_8c_ac8b8ad05dd99b6887d7fb7342c25ccd8}{INPUT}} ()
+\begin{DoxyCompactList}\small\item\em getting register\mbox{[}0\mbox{]} value \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{project_8c_a4c7f5e90646a9bf0abbca56db418354d}{OUTPUT}} ()
+\begin{DoxyCompactList}\small\item\em print register\mbox{[}0\mbox{]} value \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{project_8c_ab25360b6e8e974d12e4604812cb5d89c}{push}} (int n)
+\begin{DoxyCompactList}\small\item\em push stacks set value in stack\mbox{[}0\mbox{]} \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{project_8c_a5aa114a5939c7fd6b1b19d9f674cc8a6}{pop}} (int n)
+\begin{DoxyCompactList}\small\item\em pull stacks \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{project_8c_a5a94c64ad1a18486afa6b206b1c11d5f}{error\+\_\+index}} (int a, int b, int c, char d\mbox{[}15\mbox{]}, int z)
+\begin{DoxyCompactList}\small\item\em checking the errors for negative index and more than 31 index \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{project_8c_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em run all the code lines that is written in our file \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{project_8c_a6645214d8cdb9a49f01f13c7361a4646}\label{project_8c_a6645214d8cdb9a49f01f13c7361a4646}} 
+int {\bfseries S} \mbox{[}32\mbox{]}
+\item 
+int \mbox{\hyperlink{project_8c_a4a78cef49baf9d380688ae8a9640c28a}{Imm}}
+\item 
+\mbox{\Hypertarget{project_8c_a37d972ae0b47b9099e30983131d31916}\label{project_8c_a37d972ae0b47b9099e30983131d31916}} 
+int {\bfseries j} =0
+\item 
+\mbox{\Hypertarget{project_8c_ad8fcbe5c7fefe7adeb1e3cbf26002cec}\label{project_8c_ad8fcbe5c7fefe7adeb1e3cbf26002cec}} 
+int {\bfseries situation} \mbox{[}8\mbox{]}
+\item 
+\mbox{\Hypertarget{project_8c_a78b0c70d2e86b3e02d5cc783935a118d}\label{project_8c_a78b0c70d2e86b3e02d5cc783935a118d}} 
+int {\bfseries stack} \mbox{[}50\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+includes 
+
+Include File 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{project_8c_a208b473791cc65cdef28b1a06632767c}\label{project_8c_a208b473791cc65cdef28b1a06632767c}} 
+\index{project.c@{project.c}!ADD@{ADD}}
+\index{ADD@{ADD}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{ADD()}{ADD()}}
+{\footnotesize\ttfamily void ADD (\begin{DoxyParamCaption}\item[{int}]{rd,  }\item[{int}]{rs,  }\item[{int}]{rt }\end{DoxyParamCaption})}
+
+
+
+adding two registers 
+
+ADD 
+\begin{DoxyParams}{Parameters}
+{\em int} & rd, rs \& rt \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{project_8c_aea7e4871dbf3bbada7e723caf01d0439}\label{project_8c_aea7e4871dbf3bbada7e723caf01d0439}} 
+\index{project.c@{project.c}!ADDI@{ADDI}}
+\index{ADDI@{ADDI}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{ADDI()}{ADDI()}}
+{\footnotesize\ttfamily void ADDI (\begin{DoxyParamCaption}\item[{int}]{rt,  }\item[{int}]{rs,  }\item[{int}]{Imm }\end{DoxyParamCaption})}
+
+
+
+adding a registers and a number 
+
+ADDI 
+\begin{DoxyParams}{Parameters}
+{\em int} & rt, rs, Imm \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{project_8c_a53f6d122aba9172e5c5082831bf9b38d}\label{project_8c_a53f6d122aba9172e5c5082831bf9b38d}} 
+\index{project.c@{project.c}!AND@{AND}}
+\index{AND@{AND}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{AND()}{AND()}}
+{\footnotesize\ttfamily void AND (\begin{DoxyParamCaption}\item[{int}]{rd,  }\item[{int}]{rs,  }\item[{int}]{rt }\end{DoxyParamCaption})}
+
+
+
+AND two registers. 
+
+AND 
+\begin{DoxyParams}{Parameters}
+{\em int} & rd, rs, rt \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{project_8c_af45f9fd88ba958dc935585d12ff327dc}\label{project_8c_af45f9fd88ba958dc935585d12ff327dc}} 
+\index{project.c@{project.c}!ANDI@{ANDI}}
+\index{ANDI@{ANDI}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{ANDI()}{ANDI()}}
+{\footnotesize\ttfamily void ANDI (\begin{DoxyParamCaption}\item[{int}]{rt,  }\item[{int}]{rs,  }\item[{int}]{Imm }\end{DoxyParamCaption})}
+
+
+
+AND a register with a number. 
+
+ANDI 
+\begin{DoxyParams}{Parameters}
+{\em int} & rt, rs \& Imm \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{project_8c_a161aec8a96c389795d228ca0c3a949d5}\label{project_8c_a161aec8a96c389795d228ca0c3a949d5}} 
+\index{project.c@{project.c}!blue@{blue}}
+\index{blue@{blue}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{blue()}{blue()}}
+{\footnotesize\ttfamily void blue (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+bluecolor out put 
+
+blue text color 
+\begin{DoxyParams}{Parameters}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{project_8c_a55d87b24a8c43f74c7a16a88de23d8c9}\label{project_8c_a55d87b24a8c43f74c7a16a88de23d8c9}} 
+\index{project.c@{project.c}!DIV@{DIV}}
+\index{DIV@{DIV}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{DIV()}{DIV()}}
+{\footnotesize\ttfamily void DIV (\begin{DoxyParamCaption}\item[{int}]{rt,  }\item[{int}]{rs }\end{DoxyParamCaption})}
+
+
+
+divide two registers 
+
+DIV 
+\begin{DoxyParams}{Parameters}
+{\em int} & rs \& rt \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{project_8c_a7246c8d53de6fe3db29dacbae22570db}\label{project_8c_a7246c8d53de6fe3db29dacbae22570db}} 
+\index{project.c@{project.c}!DUMP\_REGS@{DUMP\_REGS}}
+\index{DUMP\_REGS@{DUMP\_REGS}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{DUMP\_REGS()}{DUMP\_REGS()}}
+{\footnotesize\ttfamily void DUMP\+\_\+\+REGS (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+print all register\textquotesingle{}s value 
+
+DUMP\+\_\+\+REGS 
+\begin{DoxyParams}{Parameters}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{project_8c_a57414c536ef5b7200c74c9e346c5c54a}\label{project_8c_a57414c536ef5b7200c74c9e346c5c54a}} 
+\index{project.c@{project.c}!DUMP\_REGS\_F@{DUMP\_REGS\_F}}
+\index{DUMP\_REGS\_F@{DUMP\_REGS\_F}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{DUMP\_REGS\_F()}{DUMP\_REGS\_F()}}
+{\footnotesize\ttfamily void DUMP\+\_\+\+REGS\+\_\+F (\begin{DoxyParamCaption}\item[{int}]{e }\end{DoxyParamCaption})}
+
+
+
+save the value of all registers in regs.\+tx 
+
+DUMP\+\_\+\+REGS\+\_\+F 
+\begin{DoxyParams}{Parameters}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{project_8c_a5a94c64ad1a18486afa6b206b1c11d5f}\label{project_8c_a5a94c64ad1a18486afa6b206b1c11d5f}} 
+\index{project.c@{project.c}!error\_index@{error\_index}}
+\index{error\_index@{error\_index}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{error\_index()}{error\_index()}}
+{\footnotesize\ttfamily int error\+\_\+index (\begin{DoxyParamCaption}\item[{int}]{a,  }\item[{int}]{b,  }\item[{int}]{c,  }\item[{char}]{d\mbox{[}15\mbox{]},  }\item[{int}]{z }\end{DoxyParamCaption})}
+
+
+
+checking the errors for negative index and more than 31 index 
+
+Error\+\_\+index 
+\begin{DoxyParams}{Parameters}
+{\em int} & (a, b, c, d\mbox{[}15\mbox{]}, z \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 1 or 0 
+\end{DoxyReturn}
+\mbox{\Hypertarget{project_8c_a0df115437fbb77c0311e65300c65289e}\label{project_8c_a0df115437fbb77c0311e65300c65289e}} 
+\index{project.c@{project.c}!green@{green}}
+\index{green@{green}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{green()}{green()}}
+{\footnotesize\ttfamily void green (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+greencolor out put 
+
+green text color 
+\begin{DoxyParams}{Parameters}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{project_8c_ac8b8ad05dd99b6887d7fb7342c25ccd8}\label{project_8c_ac8b8ad05dd99b6887d7fb7342c25ccd8}} 
+\index{project.c@{project.c}!INPUT@{INPUT}}
+\index{INPUT@{INPUT}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{INPUT()}{INPUT()}}
+{\footnotesize\ttfamily void INPUT (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+getting register\mbox{[}0\mbox{]} value 
+
+INPUT 
+\begin{DoxyParams}{Parameters}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{project_8c_a0ddf1224851353fc92bfbff6f499fa97}\label{project_8c_a0ddf1224851353fc92bfbff6f499fa97}} 
+\index{project.c@{project.c}!main@{main}}
+\index{main@{main}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+run all the code lines that is written in our file 
+
+main \hypertarget{project_8c_main}{}\doxysubsection{main}\label{project_8c_main}
+
+\begin{DoxyParams}{Parameters}
+{\em int} & argc, $\ast$argv\mbox{[}\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 
+\end{DoxyReturn}
+\mbox{\Hypertarget{project_8c_a406fab2688bf343429713a2eb98acc0d}\label{project_8c_a406fab2688bf343429713a2eb98acc0d}} 
+\index{project.c@{project.c}!MOV@{MOV}}
+\index{MOV@{MOV}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{MOV()}{MOV()}}
+{\footnotesize\ttfamily void MOV (\begin{DoxyParamCaption}\item[{int}]{rt,  }\item[{int}]{Imm }\end{DoxyParamCaption})}
+
+
+
+put a number in a register 
+
+MOV 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em int} & (integer number rt \& Imm) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{project_8c_ab9c9faca58fe2946cec7a2d5cce2f954}\label{project_8c_ab9c9faca58fe2946cec7a2d5cce2f954}} 
+\index{project.c@{project.c}!MULL@{MULL}}
+\index{MULL@{MULL}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{MULL()}{MULL()}}
+{\footnotesize\ttfamily void MULL (\begin{DoxyParamCaption}\item[{int}]{rt,  }\item[{int}]{rs }\end{DoxyParamCaption})}
+
+
+
+multiply two registers\+: 4 more bits in rt \& 4 less bits in rs 
+
+MULL 
+\begin{DoxyParams}{Parameters}
+{\em int} & rs \& rt \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{project_8c_a63c0b5dc1a36b43cfcbaa2fca3370599}\label{project_8c_a63c0b5dc1a36b43cfcbaa2fca3370599}} 
+\index{project.c@{project.c}!OR@{OR}}
+\index{OR@{OR}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{OR()}{OR()}}
+{\footnotesize\ttfamily void OR (\begin{DoxyParamCaption}\item[{int}]{rd,  }\item[{int}]{rs,  }\item[{int}]{rt }\end{DoxyParamCaption})}
+
+
+
+OR two registers. 
+
+OR 
+\begin{DoxyParams}{Parameters}
+{\em int} & number rd, rs, rt \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{project_8c_acc90d732c1fb58250a6bc176275b97ab}\label{project_8c_acc90d732c1fb58250a6bc176275b97ab}} 
+\index{project.c@{project.c}!ORI@{ORI}}
+\index{ORI@{ORI}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{ORI()}{ORI()}}
+{\footnotesize\ttfamily void ORI (\begin{DoxyParamCaption}\item[{int}]{rt,  }\item[{int}]{rs,  }\item[{int}]{Imm }\end{DoxyParamCaption})}
+
+
+
+OR a register with a number. 
+
+ORI 
+\begin{DoxyParams}{Parameters}
+{\em int} & rt, rs \& Imm \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{project_8c_a4c7f5e90646a9bf0abbca56db418354d}\label{project_8c_a4c7f5e90646a9bf0abbca56db418354d}} 
+\index{project.c@{project.c}!OUTPUT@{OUTPUT}}
+\index{OUTPUT@{OUTPUT}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{OUTPUT()}{OUTPUT()}}
+{\footnotesize\ttfamily void OUTPUT (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+print register\mbox{[}0\mbox{]} value 
+
+OUTPUT 
+\begin{DoxyParams}{Parameters}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{project_8c_a6456012131ddba7ac94c7404e38d7f67}\label{project_8c_a6456012131ddba7ac94c7404e38d7f67}} 
+\index{project.c@{project.c}!overflow\_flag\_add@{overflow\_flag\_add}}
+\index{overflow\_flag\_add@{overflow\_flag\_add}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{overflow\_flag\_add()}{overflow\_flag\_add()}}
+{\footnotesize\ttfamily void overflow\+\_\+flag\+\_\+add (\begin{DoxyParamCaption}\item[{int}]{a,  }\item[{int}]{b,  }\item[{int}]{c }\end{DoxyParamCaption})}
+
+
+
+Status\mbox{[}5\mbox{]} of the last Command\+: overflow. 
+
+Overflowflag add 
+\begin{DoxyParams}{Parameters}
+{\em int} & result \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{project_8c_a5966cdaaace3b911846fc8628f0d3448}\label{project_8c_a5966cdaaace3b911846fc8628f0d3448}} 
+\index{project.c@{project.c}!overflow\_flag\_mull@{overflow\_flag\_mull}}
+\index{overflow\_flag\_mull@{overflow\_flag\_mull}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{overflow\_flag\_mull()}{overflow\_flag\_mull()}}
+{\footnotesize\ttfamily void overflow\+\_\+flag\+\_\+mull (\begin{DoxyParamCaption}\item[{int}]{a,  }\item[{int}]{b,  }\item[{int}]{c }\end{DoxyParamCaption})}
+
+
+
+Status\mbox{[}5\mbox{]} of the last Command\+: overflow. 
+
+Overflowflag Mull 
+\begin{DoxyParams}{Parameters}
+{\em int} & result \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{project_8c_a5629b547292a74c1c7754626ddcb4e1e}\label{project_8c_a5629b547292a74c1c7754626ddcb4e1e}} 
+\index{project.c@{project.c}!overflow\_flag\_sub@{overflow\_flag\_sub}}
+\index{overflow\_flag\_sub@{overflow\_flag\_sub}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{overflow\_flag\_sub()}{overflow\_flag\_sub()}}
+{\footnotesize\ttfamily void overflow\+\_\+flag\+\_\+sub (\begin{DoxyParamCaption}\item[{int}]{a,  }\item[{int}]{b,  }\item[{int}]{c }\end{DoxyParamCaption})}
+
+
+
+Status\mbox{[}5\mbox{]} of the last Command\+: overflow. 
+
+Overflowflag Sub 
+\begin{DoxyParams}{Parameters}
+{\em int} & result \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{project_8c_acf6a0d679a1edf0b6d196423e84fddc2}\label{project_8c_acf6a0d679a1edf0b6d196423e84fddc2}} 
+\index{project.c@{project.c}!parity\_flag@{parity\_flag}}
+\index{parity\_flag@{parity\_flag}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{parity\_flag()}{parity\_flag()}}
+{\footnotesize\ttfamily void parity\+\_\+flag (\begin{DoxyParamCaption}\item[{int}]{result }\end{DoxyParamCaption})}
+
+
+
+Status\mbox{[}0\mbox{]} of the last Command. 
+
+Parityflag 
+\begin{DoxyParams}{Parameters}
+{\em int} & result \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{project_8c_a5aa114a5939c7fd6b1b19d9f674cc8a6}\label{project_8c_a5aa114a5939c7fd6b1b19d9f674cc8a6}} 
+\index{project.c@{project.c}!pop@{pop}}
+\index{pop@{pop}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{pop()}{pop()}}
+{\footnotesize\ttfamily void pop (\begin{DoxyParamCaption}\item[{int}]{n }\end{DoxyParamCaption})}
+
+
+
+pull stacks 
+
+POP 
+\begin{DoxyParams}{Parameters}
+{\em int} & rt \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{project_8c_ab2b14535fac90d655eb767bff5647d88}\label{project_8c_ab2b14535fac90d655eb767bff5647d88}} 
+\index{project.c@{project.c}!purple@{purple}}
+\index{purple@{purple}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{purple()}{purple()}}
+{\footnotesize\ttfamily void purple (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+purplecolor out put 
+
+Purple text color 
+\begin{DoxyParams}{Parameters}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{project_8c_ab25360b6e8e974d12e4604812cb5d89c}\label{project_8c_ab25360b6e8e974d12e4604812cb5d89c}} 
+\index{project.c@{project.c}!push@{push}}
+\index{push@{push}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{push()}{push()}}
+{\footnotesize\ttfamily void push (\begin{DoxyParamCaption}\item[{int}]{n }\end{DoxyParamCaption})}
+
+
+
+push stacks set value in stack\mbox{[}0\mbox{]} 
+
+Global variable stack PUSH 
+\begin{DoxyParams}{Parameters}
+{\em int} & rs \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{project_8c_a39abd40f68d03c40857be1e74407efb9}\label{project_8c_a39abd40f68d03c40857be1e74407efb9}} 
+\index{project.c@{project.c}!red@{red}}
+\index{red@{red}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{red()}{red()}}
+{\footnotesize\ttfamily void red (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+redcolor out put 
+
+Red text color 
+\begin{DoxyParams}{Parameters}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{project_8c_ad20897c5c8bd47f5d4005989bead0e55}\label{project_8c_ad20897c5c8bd47f5d4005989bead0e55}} 
+\index{project.c@{project.c}!reset@{reset}}
+\index{reset@{reset}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily void reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+resetcolor out put 
+
+reset text color 
+\begin{DoxyParams}{Parameters}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{project_8c_a84a58a762ae710fa88c6110dd57d27c9}\label{project_8c_a84a58a762ae710fa88c6110dd57d27c9}} 
+\index{project.c@{project.c}!sign\_flag@{sign\_flag}}
+\index{sign\_flag@{sign\_flag}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{sign\_flag()}{sign\_flag()}}
+{\footnotesize\ttfamily void sign\+\_\+flag (\begin{DoxyParamCaption}\item[{int}]{result }\end{DoxyParamCaption})}
+
+
+
+Status\mbox{[}2\mbox{]} of the last Command\+: Sign. 
+
+Signflag 
+\begin{DoxyParams}{Parameters}
+{\em int} & result \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{project_8c_a7d552c470d929956ad217d8890a22e19}\label{project_8c_a7d552c470d929956ad217d8890a22e19}} 
+\index{project.c@{project.c}!SUB@{SUB}}
+\index{SUB@{SUB}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{SUB()}{SUB()}}
+{\footnotesize\ttfamily void SUB (\begin{DoxyParamCaption}\item[{int}]{rd,  }\item[{int}]{rs,  }\item[{int}]{rt }\end{DoxyParamCaption})}
+
+
+
+subing two registers 
+
+SUB 
+\begin{DoxyParams}{Parameters}
+{\em int} & rd, rs \& rt \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{project_8c_a73241cd5d065fe5e3c8fcd17f29ba1ed}\label{project_8c_a73241cd5d065fe5e3c8fcd17f29ba1ed}} 
+\index{project.c@{project.c}!SUBI@{SUBI}}
+\index{SUBI@{SUBI}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{SUBI()}{SUBI()}}
+{\footnotesize\ttfamily void SUBI (\begin{DoxyParamCaption}\item[{int}]{rt,  }\item[{int}]{rs,  }\item[{int}]{Imm }\end{DoxyParamCaption})}
+
+
+
+subbing a registers and a number 
+
+SUBI 
+\begin{DoxyParams}{Parameters}
+{\em int} & rt, rs \& Imm \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{project_8c_ae1d663091740d39219a78794f4c6120e}\label{project_8c_ae1d663091740d39219a78794f4c6120e}} 
+\index{project.c@{project.c}!SWP@{SWP}}
+\index{SWP@{SWP}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{SWP()}{SWP()}}
+{\footnotesize\ttfamily void SWP (\begin{DoxyParamCaption}\item[{int}]{rt,  }\item[{int}]{rs }\end{DoxyParamCaption})}
+
+
+
+swap two registers 
+
+SWP 
+\begin{DoxyParams}{Parameters}
+{\em int} & rt \& rs \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{project_8c_ac0fd834412eb7d5311f137d919db6788}\label{project_8c_ac0fd834412eb7d5311f137d919db6788}} 
+\index{project.c@{project.c}!white@{white}}
+\index{white@{white}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{white()}{white()}}
+{\footnotesize\ttfamily void white (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+whitecolor out put 
+
+white text color 
+\begin{DoxyParams}{Parameters}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{project_8c_a4c2aba9cfc40e6c523935c9b706fc17b}\label{project_8c_a4c2aba9cfc40e6c523935c9b706fc17b}} 
+\index{project.c@{project.c}!XOR@{XOR}}
+\index{XOR@{XOR}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{XOR()}{XOR()}}
+{\footnotesize\ttfamily void XOR (\begin{DoxyParamCaption}\item[{int}]{rd,  }\item[{int}]{rs,  }\item[{int}]{rt }\end{DoxyParamCaption})}
+
+
+
+XOR two registers. 
+
+XOR 
+\begin{DoxyParams}{Parameters}
+{\em int} & rd, rs, rt \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{project_8c_a45a828d6c33c2f9cc2983efb4a3067ac}\label{project_8c_a45a828d6c33c2f9cc2983efb4a3067ac}} 
+\index{project.c@{project.c}!XORI@{XORI}}
+\index{XORI@{XORI}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{XORI()}{XORI()}}
+{\footnotesize\ttfamily void XORI (\begin{DoxyParamCaption}\item[{int}]{rt,  }\item[{int}]{rs,  }\item[{int}]{Imm }\end{DoxyParamCaption})}
+
+
+
+XOR a register with a number. 
+
+XORI 
+\begin{DoxyParams}{Parameters}
+{\em int} & rt, rs \& Imm \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{project_8c_ab0c10e6284be130a7973fa029a690ef7}\label{project_8c_ab0c10e6284be130a7973fa029a690ef7}} 
+\index{project.c@{project.c}!yellow@{yellow}}
+\index{yellow@{yellow}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{yellow()}{yellow()}}
+{\footnotesize\ttfamily void yellow (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+yellowcolor out put 
+
+yellow text color 
+\begin{DoxyParams}{Parameters}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{project_8c_a1af144ae42cefa4930edcbc7973f35ab}\label{project_8c_a1af144ae42cefa4930edcbc7973f35ab}} 
+\index{project.c@{project.c}!zero\_flag@{zero\_flag}}
+\index{zero\_flag@{zero\_flag}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{zero\_flag()}{zero\_flag()}}
+{\footnotesize\ttfamily void zero\+\_\+flag (\begin{DoxyParamCaption}\item[{int}]{result }\end{DoxyParamCaption})}
+
+
+
+Status\mbox{[}1\mbox{]} of the last Command\+: Numbers of zeros. 
+
+Zeroflag 
+\begin{DoxyParams}{Parameters}
+{\em int} & result \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{project_8c_a4a78cef49baf9d380688ae8a9640c28a}\label{project_8c_a4a78cef49baf9d380688ae8a9640c28a}} 
+\index{project.c@{project.c}!Imm@{Imm}}
+\index{Imm@{Imm}!project.c@{project.c}}
+\doxysubsubsection{\texorpdfstring{Imm}{Imm}}
+{\footnotesize\ttfamily int Imm}
+
+Conditional Registers 

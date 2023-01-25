@@ -1,0 +1,15 @@
+Mov S9, 9
+INPUT 
+MOV S21, 18
+// comment Test
+ADDI S4, s21, -27
+SUBI S8, s4, 72
+MULL s9, S8 //test case 3
+JMP 10
+
+DIV s8, S9
+MOv s5, 54
+Mov s7, 9
+MULL S5, S7
+DUMP_REGS
+DUMP_REGS_F

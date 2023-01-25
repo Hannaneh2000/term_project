@@ -1,0 +1,27 @@
+//forth test case for project.case
+mov s7, 3
+addi s3, s7, 0
+mov s4, 5
+sub s5, s3, s4
+SKIE s3, s7
+skie jump
+INPUT
+OUTPUT
+jump to other line
+jmp 2
+add s32, s7, s3
+AND s9, s5, s4
+ANDI s11, s21, s3
+XOR s14, s7, s4
+PUSH s3
+push s4
+push s5
+PUSH s7
+PUSH s9
+POP s9
+swp s14, s11
+Mov s16, 5
+SUBI s17, S16, 5
+DUMP_REGS
+DUMP_REGS_F
+EXIT

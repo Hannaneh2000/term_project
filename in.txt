@@ -7,11 +7,11 @@ JMP 23    \\jump is more than 17
 MULL S25, S15
 ADD S12, S-1, S1
 jump
-JMP 2
 MOV S23, 9
 SKIE S3, S4
 ADD S7, S1, S23
 INPUT
+ADD S3, S1, S23
 DUMP_REGS
 
 //test comment
