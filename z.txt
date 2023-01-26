@@ -9,7 +9,7 @@ INPUT
 OUTPUT
 jump to other line
 jmp 2
-add s32, s7, s3
+add s35, s7, s3
 AND s9, s5, s4
 ANDI s11, s21, s3
 XOR s14, s7, s4

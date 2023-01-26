@@ -1,8 +1,4 @@
 /**
- * Include File
- * @brief includes
-**/
-/**
  * @file project.c
  * @file regs.txt
  * @file in.txt
@@ -15,6 +11,10 @@
  * @note fundamentals of programming.
  * \mainpage 
  * CPU registers
+**/
+/**
+ * Include File
+ * @brief includes
 **/
 #include <stdio.h>
 #include <string.h>
@@ -407,16 +407,16 @@ void DUMP_REGS_F(int e)
 {
     FILE *file;
     file=fopen("regs.txt", "w");
-    if (file == NULL)
-        printf("Error Dump Regs F in line %d\n", e);
-    else
-    {
-        for (int i = 0; i < 32; i++)
-            fprintf(file, " %d ", S[i]);
-        fprintf(file, "\n");
-        for (int i = 0; i < 8; i++)
-            fprintf(file, " %d ", situation[i]);
-    }
+    // if (file == NULL)
+    //     printf("Error Dump Regs F in line %d\n", e);
+    // else
+    // {
+    for (int i = 0; i < 32; i++)
+        fprintf(file, " %d ", S[i]);
+    fprintf(file, "\n");
+    for (int i = 0; i < 8; i++)
+        fprintf(file, " %d ", situation[i]);
+    // }
     fclose(file);
 }
 /**
@@ -517,7 +517,7 @@ int main(int argc, char *argv[])
     {
         reset();
         lineerror++;
-        jmpcount++;
+        // jmpcount++;
         char forms[15] = {'\0'};
         for (int i = 0; i< sizeof(buffer); i++)
             buffer[i] = toupper(buffer[i]);
