@@ -542,9 +542,6 @@ int main(int argc, char *argv[])
                     red();
                     printf("loop skip in line %d\n", lineerror);
                     white();
-                    // fscanf(Inputs, "%[^\n]\n", buffer);
-                    // lineerror--;
-                    // jmpcount = 0;
                 }
                 else
                 {
