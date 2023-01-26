@@ -584,9 +584,11 @@ int main(int argc, char *argv[])
                 if (error_index(one, two, 1, forms, lineerror) == 2)
                 {
                     if (S[one] == S[two])
-                    fscanf(Inputs, "%[^\n]\n", buffer);
+                    {
+                        fscanf(Inputs, "%[^\n]\n", buffer);
+                        lineerror++;
+                    }
                 }
-                lineerror++;
             }
             else if(strcmp(forms, "SUB") == 0)
             {
